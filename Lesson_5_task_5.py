@@ -1,0 +1,11 @@
+num_text=open("num_text.txt", 'w+', encoding='utf-8')
+num_list="1 2 3 4 5 6 7 8 9"
+num_list=num_list.split()
+num_sum=sum(map(int,num_list))
+num_text.writelines(num_list)
+num_text.seek(0)
+content=num_text.readlines()
+content=''.join(content)
+content_sum=sum(map(int, content))
+print(f'Сумма чисел в файле: {content_sum}')
+num_text.close()
