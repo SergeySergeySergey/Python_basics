@@ -1,20 +1,23 @@
-class TotalError (Exception):
+class TotalError(Exception):
     def __init__(self, txt):
         self.txt = txt
-user_list=[]
+
+
+user_list = []
 
 while user_list.count("stop") == 0:
     try:
-        user_list_input = int(input("Введите числа, для завершения ввода введите q: "))
-        user_list.append(user_list_input)
-        if user_list.count("stop") > 0:
-            print(user_list)
+        user_list_input = input("Введите числа, для завершения работы программы введите stop: ")
+        if user_list_input == 'stop':
+            raise TotalError("Команда stop останавливает выполнение программы")
             exit(0)
-            raise TotalError ("Вы ввели ключевое слово, работа программы остановлена")
+        if int(user_list_input) > 0 or int(user_list_input) <= 0:
+            user_list.append(user_list_input)
     except ValueError:
         print("Допустим ввод только чисел")
     except TotalError as err:
+        print(user_list)
         print(err)
+        exit(0)
     else:
         print(user_list)
-user_list
